@@ -1,11 +1,11 @@
 #!/bin/bash
 
-python -c "print('Python container started.')"
+python -c "print('<<<Python container started.>>>')"
 
 if [[ ! -d "/apps/main/repo/$block/.next" ]] || [[ "$rebuild" == "true" ]]; then
     # echo "Cloning github token:${githubtoken}"
 
-    echo 'Hi! Welcome to QE Auto publisher!'
+    echo 'Hi! Welcome to QE Auto <Python> publisher!'
 
     # pip install ${pipinstall}
 
@@ -19,12 +19,6 @@ if [[ ! -d "/apps/main/repo/$block/.next" ]] || [[ "$rebuild" == "true" ]]; then
     sleep 1
 
     cd /apps/main/repo/${block}
-
-    sleep 1
-
-    echo 'Building XOXO ;)'
-
-    yarn build
 
     sleep 1
 fi
