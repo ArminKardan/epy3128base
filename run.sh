@@ -2,7 +2,7 @@
 
 python -c "print('<<<Python container started.>>>')"
 
-if [[ ! -d "/apps/main/repo/$block/.next" ]] || [[ "$rebuild" == "true" ]]; then
+if [[ ! -d "/apps/main/repo/$block" ]] || [[ "$rebuild" == "true" ]]; then
     # echo "Cloning github token:${githubtoken}"
 
     echo 'Hi! Welcome to QE Auto <Python> publisher!'

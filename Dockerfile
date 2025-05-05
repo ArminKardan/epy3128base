@@ -18,6 +18,7 @@ RUN apk add maturin
 RUN apk add cargo
 
 RUN pip install slixmpp
+RUN pip install nest_asyncio bson requests pymongo
 
 COPY ./run.sh /apps/run.sh
 
@@ -29,7 +30,4 @@ EXPOSE 3000
 
 CMD ["/bin/sh", "-c", "/apps/run.sh"]
 
-# Default command to keep the container running
-# CMD ["python", "-c", "import time; print('Container started.'); time.sleep(1 << 30)"]
-# CMD ["python", "-c", "print('Container started.')"]
 
