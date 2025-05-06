@@ -14,10 +14,8 @@ RUN apk update && apk add --no-cache \
     shadow \
     && rm -rf /var/cache/apk/*
 
-RUN apk add maturin
-RUN apk add cargo
-
-RUN pip install slixmpp
+    
+RUN pip install slixmpp --only-binary :all:
 RUN pip install nest_asyncio bson requests pymongo
 
 COPY ./run.sh /apps/run.sh
