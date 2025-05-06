@@ -16,7 +16,7 @@ RUN apk update && apk add --no-cache \
 
     
 RUN pip install slixmpp --only-binary :all:
-RUN pip install nest_asyncio bson requests pymongo fastapi uvicorn
+RUN pip install nest_asyncio bson requests pymongo fastapi uvicorn dotenv
 
 COPY ./run.sh /apps/run.sh
 
