@@ -14,7 +14,7 @@ if [[ ! -d "/apps/main/repo/$block" ]] || [[ "$rebuild" == "true" ]]; then
     cd /apps/main/repo
     git sparse-checkout init --no-cone                        
     git sparse-checkout set /${block}/
-    git checkout master
+    git checkout main
 
     sleep 1
 
