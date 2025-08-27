@@ -16,7 +16,7 @@ RUN apk update && apk add --no-cache \
 
     
 RUN pip install slixmpp --only-binary :all:
-RUN pip install numpy bson uvicorn cryptography nest_asyncio requests pymongo fastapi uvicorn dotenv aiohttp  requests-toolbelt
+RUN pip install numpy uvicorn cryptography nest_asyncio requests pymongo fastapi uvicorn dotenv aiohttp  requests-toolbelt
 
 COPY ./run.sh /apps/run.sh
 
