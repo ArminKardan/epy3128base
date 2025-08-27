@@ -24,6 +24,8 @@ WORKDIR /apps/
 
 RUN chmod 777 /apps/run.sh
 
+ENV PYTHONUNBUFFERED=1
+
 EXPOSE 3000
 
 CMD ["/bin/sh", "-c", "/apps/run.sh"]
