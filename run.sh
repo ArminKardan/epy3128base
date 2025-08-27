@@ -7,8 +7,10 @@ if [[ ! -d "/apps/main/repo/$block" ]] || [[ "$rebuild" == "true" ]]; then
 
     echo 'Hi! Welcome to QE Auto <Python> publisher!'
 
-    pip install ${pipinstall}
-
+    if [ -n "$pipinstall" ]; then
+        pip install ${pipinstall}
+    fi
+    
     git clone -n --filter=tree:0 --sparse ${giturl} /apps/main/repo
     sleep 1
     cd /apps/main/repo
