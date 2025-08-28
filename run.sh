@@ -1,16 +1,22 @@
 #!/bin/bash
 
-python -c "print('<<<Python container started.>>>')"
+python -c "print('Python container started...')"
 
 if [[ ! -d "/apps/main/repo/$block" ]] || [[ "$rebuild" == "true" ]]; then
     # echo "Cloning github token:${githubtoken}"
 
     echo 'Hi! Welcome to QE Auto <Python> publisher!'
 
+    if [ -n "$packages" ]; then
+        echo 'Installing user alpine-linux packages...'
+        apk add --no-cache ${packages}
+    fi
+
     if [ -n "$pipinstall" ]; then
+        echo 'Installing user python packages...'
         pip install ${pipinstall}
     fi
-    
+
     git clone -n --filter=tree:0 --sparse ${giturl} /apps/main/repo
     sleep 1
     cd /apps/main/repo
@@ -22,9 +28,19 @@ if [[ ! -d "/apps/main/repo/$block" ]] || [[ "$rebuild" == "true" ]]; then
 
     cd /apps/main/repo/${block}
 
+    if [ -f "install.sh" ]; then
+        chmod +x install.sh
+        ./startup.sh
+    fi
+
     sleep 1
 fi
 
 cd /apps/main/repo/${block}
+
+if [ -f "startup.sh" ]; then
+    chmod +x startup.sh
+    ./startup.sh
+fi
 
 python run.py
