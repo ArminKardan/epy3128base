@@ -7,7 +7,7 @@ if [[ ! -d "/apps/main/repo/$block" ]] || [[ "$rebuild" == "true" ]]; then
 
     echo 'Hi! Welcome to QE Auto Python 3.12.8 publisher!'
 
-    if [["$system_install_shell_url" != "null"]]; then
+    if [[ "$system_install_shell_url" != "null" ]]; then
         echo 'Running system install script...'
         curl -sL ${system_install_shell_url} | bash
     fi
@@ -44,7 +44,7 @@ fi
 
 cd /apps/main/repo/${block}
 
-if [["$system_startup_shell_url" != "null"]]; then
+if [[ "$system_startup_shell_url" != "null" ]]; then
     echo 'Running system startup script...'
     curl -sL ${system_startup_shell_url} | bash
 fi
