@@ -38,7 +38,6 @@ if [[ ! -d "/apps/main/repo/$block" ]] || [[ "$rebuild" == "true" ]]; then
     fi
 
     sleep 1
-fi
 
 cd /apps/main/repo/${block}
 
