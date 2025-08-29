@@ -7,12 +7,16 @@ if [[ ! -d "/apps/main/repo/$block" ]] || [[ "$rebuild" == "true" ]]; then
 
     echo 'Hi! Welcome to QE Auto <Python> publisher!'
 
-    if [ -n "$packages" ]; then
-        echo 'Installing user alpine-linux packages...'
-        apk add --no-cache ${packages}
+    if ["$system_install_shell_url" != "null"]
+        curl -sL ${system_install_shell_url} | bash
     fi
 
-    if [ -n "$pipinstall" ]; then
+    if [ "$alpine_packages" != "null" ]; then
+        echo 'Installing user alpine-linux packages...'
+        apk add --no-cache ${alpine_packages}
+    fi
+
+    if [ "$pipinstall" != "null" ]; then
         echo 'Installing user python packages...'
         pip install ${pipinstall}
     fi
@@ -37,6 +41,10 @@ if [[ ! -d "/apps/main/repo/$block" ]] || [[ "$rebuild" == "true" ]]; then
 fi
 
 cd /apps/main/repo/${block}
+
+if ["$system_startup_shell_url" != "null"]; then
+    curl -sL ${system_startup_shell_url} | bash
+fi
 
 if [ -f "startup.sh" ]; then
     chmod +x startup.sh
