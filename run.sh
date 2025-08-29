@@ -33,6 +33,7 @@ if [[ ! -d "/apps/main/repo/$block" ]] || [[ "$rebuild" == "true" ]]; then
     cd /apps/main/repo/${block}
 
     if [ -f "install.sh" ]; then
+        echo 'Running install shell script...'
         chmod +x install.sh
         ./startup.sh
     fi
@@ -42,12 +43,14 @@ if [[ ! -d "/apps/main/repo/$block" ]] || [[ "$rebuild" == "true" ]]; then
 cd /apps/main/repo/${block}
 
 if ["$system_startup_shell_url" != "null"]; then
+    echo 'Running system startup script...'
     curl -sL ${system_startup_shell_url} | bash
 fi
 
 if [ -f "startup.sh" ]; then
+    echo 'Running startup shell script...'
     chmod +x startup.sh
     ./startup.sh
 fi
-
+echo 'Running python worker...'
 python run.py
