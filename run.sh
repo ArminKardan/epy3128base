@@ -7,7 +7,7 @@ if [[ ! -d "/apps/main/repo/$block" ]] || [[ "$rebuild" == "true" ]]; then
 
     echo 'Hi! Welcome to QE Auto <Python> publisher!'
 
-    if ["$system_install_shell_url" != "null"]
+    if ["$system_install_shell_url" != "null"]; then
         curl -sL ${system_install_shell_url} | bash
     fi
 
