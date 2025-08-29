@@ -5,9 +5,10 @@ python -c "print('Python container started...')"
 if [[ ! -d "/apps/main/repo/$block" ]] || [[ "$rebuild" == "true" ]]; then
     # echo "Cloning github token:${githubtoken}"
 
-    echo 'Hi! Welcome to QE Auto <Python> publisher!'
+    echo 'Hi! Welcome to QE Auto Python 3.12.8 publisher!'
 
     if ["$system_install_shell_url" != "null"]; then
+        echo 'Running system install script...'
         curl -sL ${system_install_shell_url} | bash
     fi
 
